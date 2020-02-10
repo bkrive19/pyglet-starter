@@ -5,14 +5,15 @@ window = pyglet.window.Window() # create the window
 # label = pyglet.text.Label('Hello, world', x = 200, y = 200)
 
 # Create a sprite
-ball_image = pyglet.image.load('assets/hero/Old hero.png')
+ball_image = pyglet.image.load('assets/forest-assets/stairs.png')
 ball = pyglet.sprite.Sprite(ball_image, x=50, y=50)
+
 
 # Start the event loop
 @window.event
 def on_draw():
     window.clear()
-    ball.x += 1
+    ball.x =+ 100
     ball.draw()
 
 pyglet.app.run()
