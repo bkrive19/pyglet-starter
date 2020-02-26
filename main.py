@@ -3,7 +3,7 @@ window = pyglet.window.Window() # create the window
 
 # Create a sprite
 img = pyglet.image.load('assets/hero/sliced/idle-1.png')
-spr = pyglet.sprite.Sprite(img, x = 100, y = 200)
+spr = pyglet.sprite.sprite(img, x = 100, y = 200)
 spr.scale = 4
 
 keys = pyglet.window.key.KeyStateHandler()
@@ -12,8 +12,13 @@ win.push_handlers(keys)
 def update(dt):
   if keys[pyglet.window.key.LEFT]:
     spr.x -= 1
-if keys[pyglet.window.key.RIGHT]:
-  spr.x += 1
+    print("left")
+  if keys[pyglet.window.key.RIGHT]:
+    spr.x += 1
+  if keys[pyglet.window.key.DOWN]:
+    spr.y -= 1
+  if keys[pyglet.window.key.UP]:
+    spr.y += 1
 
 # Start the event loop
 @window.event
@@ -22,4 +27,5 @@ def on_draw():
     spr.draw()
 
 
+pyglet.clock.schedule(update) 
 pyglet.app.run()
