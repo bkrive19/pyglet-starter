@@ -1,31 +1,56 @@
 import pyglet # import the library
-window = pyglet.window.Window() # create the window
+import random
+import time
+win = pyglet.window.Window() # create the window
+
+
+x = 200
+y = 200
+
+
 
 # Create a sprite
 img = pyglet.image.load('assets/hero/sliced/idle-1.png')
-spr = pyglet.sprite.sprite(img, x = 100, y = 200)
-spr.scale = 4
+spr = pyglet.sprite.Sprite(img, x = 100, y = 200)
+spr.scale = 3
 
+# create another image
+img = pyglet.image.load('/Users/bkrive19/Downloads/WASD.gif')
+smol_img = img.get_region(x=0, y=0, width=32, height=32)
+spri = pyglet.sprite.Sprite(smol_img, x = 100, y = 100)
+spri.scale = 4
+
+
+
+#keys setup
 keys = pyglet.window.key.KeyStateHandler()
 win.push_handlers(keys)
 
+#text
+label = pyglet.text.Label('Move with W,A,S,D', x = 340, y = 467)
+
+
 def update(dt):
-  if keys[pyglet.window.key.LEFT]:
-    spr.x -= 1
-    print("left")
-  if keys[pyglet.window.key.RIGHT]:
-    spr.x += 1
-  if keys[pyglet.window.key.DOWN]:
-    spr.y -= 1
-  if keys[pyglet.window.key.UP]:
-    spr.y += 1
+  win.clear()
+
+  if keys[pyglet.window.key.A]:
+    spr.x -= 3
+  if keys[pyglet.window.key.D]:
+    spr.x += 3
+  if keys[pyglet.window.key.S]:
+    spr.y -= 3
+  if keys[pyglet.window.key.W]:
+    spr.scale = 3
+    spr.y += 3
 
 # Start the event loop
-@window.event
+@win.event
 def on_draw():
-    window.clear()
+    win.clear()
+    label.draw()
     spr.draw()
 
+time.sleep(2)
 
 pyglet.clock.schedule(update) 
 pyglet.app.run()
