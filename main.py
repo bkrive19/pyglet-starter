@@ -27,7 +27,7 @@ keys = pyglet.window.key.KeyStateHandler()
 win.push_handlers(keys)
 
 #text
-label = pyglet.text.Label('Move with W,A,S,D', x = 340, y = 467)
+label = pyglet.text.Label('Move with W,A,S,D', x = 498, y = 467)
 
 
 def update(dt):
@@ -50,7 +50,6 @@ def on_draw():
     label.draw()
     spr.draw()
 
-time.sleep(2)
 
 pyglet.clock.schedule(update) 
 pyglet.app.run()
